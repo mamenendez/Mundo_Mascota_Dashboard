@@ -1,36 +1,42 @@
 import React from 'react';
-import imagenLogo from '../assets/images/logo.PNG';
+import imagenLogo from '../assets/images/logo.PNG'; 
+
 
 function SideBar(){
     return(
         <React.Fragment>
             {/*<!-- Sidebar -->*/}
-            <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion color-MMDH" id="accordionSidebar">
 
                 {/*<!-- Sidebar - Brand -->*/}
+                <br></br>
+                <br></br>
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                     <div className="sidebar-brand-icon">
-                        <img className="w-120" src={imagenLogo} alt="Imagen Logo"/>
+                    
+                        <img className="w-120 logo-principal" src={imagenLogo} alt="Imagen Logo"/>
+                        
                     </div>
                 </a>
-
+                <br></br>
+                <br></br>
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider my-0"/>
-
+                
                 {/*<!-- Nav Item - Dashboard -->*/}
                 <li className="nav-item active">
                     <a className="nav-link" href="/">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - Mundo Mascotas DH</span></a>
+                        <span>Dashboard</span></a>
                 </li>
 
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider"/>
 
-                {/*<!-- Heading -->*/}
+                {/*<!-- Acciones -->*/}
                 <div className="sidebar-heading">Acciones</div>
 
-                {/*<!-- Nav Item - Pages -->*/}
+                {/*<!-- Productos -->*/}
                 <li className="nav-item">
                     <a className="nav-link collapsed" href="/">
                         <i className="fas fa-paw iconito"></i>
@@ -38,14 +44,14 @@ function SideBar(){
                     </a>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
+                {/*<!-- Usuarios -->*/}
                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         <i className="fas fa-paw iconito"></i>
                         <span>Usuarios</span></a>
                 </li>
 
-                {/*<!-- Nav Item - Tables -->*/}
+                {/*<!-- Categorias -->*/}
                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         <i className="fas fa-paw iconito"></i>
@@ -55,7 +61,7 @@ function SideBar(){
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
-            {/*<!-- End of Sidebar -->*/}
+            {/*<!--  Sidebar -->*/}
             
         </React.Fragment>
     )
