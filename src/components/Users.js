@@ -5,17 +5,17 @@ class Users extends Component{
     constructor(){
         super()
         this.state ={
-            listUser: []
+            usuarioList: []
         }
     }
 
     componentDidMount(){
-        fetch('api/usuarios')
+        fetch('api/users')
         .then(respuesta =>{
             return respuesta.json()
         })
         .then(usuarios =>{
-            this.setState({listUser: usuarios.data})
+            this.setState({usuarioList: usuarios.data})
         })
         .catch(error => console.log(error))
     }
@@ -37,7 +37,7 @@ class Users extends Component{
                                 </tr>
                             </thead>
                             {
-                            this.state.listUser.map((usuario,index)=>{
+                            this.state.usuarioList.map((usuario,index)=>{
                                 return <UserList {...usuario} key={index} />
                             })
                         }
@@ -49,4 +49,4 @@ class Users extends Component{
         )
     }   
 }
-export default Users; */
+export default Users;  */

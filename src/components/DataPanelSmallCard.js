@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DataNumbersSmallCard(props){
+function DataPanelSmallCard(props){
     return(
         <React.Fragment>
             <div className="col-md-4 mb-4">
@@ -21,4 +21,4 @@ function DataNumbersSmallCard(props){
         </React.Fragment>
     )
 }
-export default DataNumbersSmallCard;
+export default DataPanelSmallCard;

@@ -1,8 +1,8 @@
-import React from 'react';
-import SmallCard from './DataNumbersSmallCard';
+import React , {Component} from 'react';
+import SmallCard from './DataPanelSmallCard';
 
 
-class DataPanel extends React.Component{
+class DataPanel extends Component{
     constructor(){
         super()
         this.state = {
@@ -11,10 +11,10 @@ class DataPanel extends React.Component{
             categories : 0
         }
     }
-
+    
     componentDidMount(){
         let cantProductos = fetch('api/products').then(respuesta =>{return respuesta.json()});
-        let cantUsuarios = fetch('api/usuarios').then(respuesta =>{return respuesta.json()});
+        let cantUsuarios = fetch('api/users').then(respuesta =>{return respuesta.json()});
         Promise.all ([cantProductos,cantUsuarios])
         .then (([cantProductos,cantUsuarios]) =>{
             this.setState ({productLength: cantProductos.count})
@@ -41,7 +41,7 @@ class DataPanel extends React.Component{
                 color: "azul1",
                 titulo: "Usuarios",
                 valor: this.state.usersLength,
-                icono: "ffas fa-paw",
+                icono: "fas fa-paw",
             }
             
             let user = {
