@@ -17,8 +17,8 @@ class DataPanel extends Component{
         let cantUsuarios = fetch('api/users').then(respuesta =>{return respuesta.json()});
         Promise.all ([cantProductos,cantUsuarios])
         .then (([cantProductos,cantUsuarios]) =>{
-            this.setState ({productLength: cantProductos.count})
-            this.setState ({usersLength: cantUsuarios.total})
+            this.setState ({productLength: cantProductos.Count})
+            this.setState ({usersLength: cantUsuarios.Count})
             this.setState ({categories:cantProductos.categoriesCount})
         })
     }

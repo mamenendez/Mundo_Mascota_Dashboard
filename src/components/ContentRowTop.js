@@ -17,11 +17,11 @@ class ContentRowTop extends Component {
 	}
 	/* Se encarga de modificar los estados de nombre,descripcion e imagen */
 	componentDidMount() {
-		fetch('api/products')
+		fetch('/api/products/:id')
 			.then(respuesta => { return respuesta.json() })
-			.then(productos => { return productos.products[productos.products.length - 1] })
-			.then(product => {
-				let parts = product.detailURL.split('/');
+			.then(productos => { return productos.data[productos.data.length - 1] })
+			.then(data => {
+				let parts = data.detailURL.split('/');
 				let url = 'api/products' + parts[parts.length - 1];
 				fetch(url).then(resp => { return resp.json() })
 					.then(producto => {

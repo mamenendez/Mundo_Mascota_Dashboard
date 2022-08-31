@@ -11,12 +11,8 @@ class ProductsInDb extends Component{
 
     componentDidMount(){
         fetch('api/products')
-        .then(respuesta =>{
-            return respuesta.json()
-        })
-        .then(productos =>{
-            this.setState({productList: productos.products})
-        })
+        .then(respuesta =>{ return respuesta.json()})
+        .then(productos =>{ this.setState({productList: productos.data})})
         .catch(error => console.log(error))
     }
 
