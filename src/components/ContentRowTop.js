@@ -17,18 +17,23 @@ class ContentRowTop extends Component {
 	}
 	/* Se encarga de modificar los estados de nombre,descripcion e imagen */
 	componentDidMount() {
-		fetch('/api/products/:id')
+		fetch('/api/products')
 			.then(respuesta => { return respuesta.json() })
 			.then(productos => { return productos.data[productos.data.length - 1] })
-			.then(data => {
-				let parts = data.detailURL.split('/');
-				let url = 'api/products' + parts[parts.length - 1];
-				fetch(url).then(resp => { return resp.json() })
-					.then(producto => {
-						this.setState({ nombre: producto.data.productToSend.name });
-						this.setState({ descripcion: producto.data.productToSend.description });
-						let parts = producto.data.imageURL.split('/');
-						this.setState({ imageSrc: '/img/usersimage/' + parts[parts.length - 1] });
+			.then(ultProducto => { 
+				/* console.log(ultProducto); */
+				let parts = ultProducto.detailUrl.split('/');
+				/* console.log(parts);  */
+				let detailUrl = 'api/products/' + parts[parts.length - 1];
+				/* console.log(detailUrl); */
+				fetch(detailUrl)
+				.then(resp => { return resp.json() })
+					.then(producto => { 
+						this.setState({ nombre: producto.data.name });
+						this.setState({ descripcion: producto.data.description });
+						let parts = producto.data.image.split('/');
+						this.setState({ imageSrc: 'img/products/' + parts[parts.length - 1] });
+						
 					})
 					.catch(error => {
 						return (error)
@@ -78,6 +83,7 @@ class ContentRowTop extends Component {
 									<div className="card-body">
 										<div className="text-center">
 											<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={imageRoute} alt="Imagen de producto" />
+
 										</div>
 										<p className="h2"> <strong> {this.state.nombre} </strong> </p>
 										<p className="h4"> <strong> {this.state.descripcion} </strong> </p>

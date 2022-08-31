@@ -15,11 +15,13 @@ class DataPanel extends Component{
     componentDidMount(){
         let cantProductos = fetch('api/products').then(respuesta =>{return respuesta.json()});
         let cantUsuarios = fetch('api/users').then(respuesta =>{return respuesta.json()});
-        Promise.all ([cantProductos,cantUsuarios])
-        .then (([cantProductos,cantUsuarios]) =>{
-            this.setState ({productLength: cantProductos.Count})
-            this.setState ({usersLength: cantUsuarios.Count})
-            this.setState ({categories:cantProductos.categoriesCount})
+        let categoriesCount = fetch('api/categorysAnimals').then(respuesta =>{return respuesta.json()});
+        Promise.all ([cantProductos,cantUsuarios,categoriesCount])
+        .then (([cantProductos,cantUsuarios,categoriesCount]) =>{ 
+            this.setState ({productLength: cantProductos.meta.Count})
+            this.setState ({usersLength: cantUsuarios.meta.Count})
+            this.setState ({categories: categoriesCount.meta.Count})
+            console.log(this.state.cantProductos);console.log(this.state.cantUsuarios);console.log(this.state.categoriesCount);
         })
     }
 
@@ -34,21 +36,21 @@ class DataPanel extends Component{
                 color: "azul1",
                 titulo: "Productos",
                 valor: this.state.productLength,
-                icono: "fas fa-shopping-cart",
+                icono: "fas fa-shopping-cart"
             }
             
             let amount ={
                 color: "azul1",
                 titulo: "Usuarios",
                 valor: this.state.usersLength,
-                icono: "fas fa-paw",
+                icono: "fas fa-paw"
             }
             
             let user = {
                 color: "azul1",
                 titulo: "Categorias",
                 valor: this.state.categories,
-                icono: "fa-solid fa-users",
+                icono: "fa-solid fa-users"
             }
             
             cardProps = [productInDataBase, amount, user];
